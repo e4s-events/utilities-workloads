@@ -50,46 +50,6 @@ spec:
                                 "vlan_id": 200
                             }
                         ]
-                    },
-                    {
-                        "name": "vSwitch2",
-                        "policy": {
-                            "nic_teaming": {
-                                "policy": "LOADBALANCE_SRCID",
-                                "notify_switches": true,
-                                "rolling_order": false,
-                                "link_criteria_beacon": "IGNORE",
-                                "active_nics": [
-                                    "vmnic2"
-                                ],
-                                "standby_nics": []
-                            },
-                            "security": {
-                                "allow_promiscuous": false,
-                                "mac_changes": false,
-                                "forged_transmits": false
-                            },
-                            "traffic_shaping": {
-                                "enabled": false
-                            }
-                        },
-                        "bridge": {
-                            "link_discovery_protocol": {
-                                "protocol": "CDP",
-                                "operation": "LISTEN"
-                            },
-                            "nics": [
-                                "vmnic2"
-                            ]
-                        },
-                        "num_ports": 1024,
-                        "mtu": 1500,
-                        "port_groups": [
-                            {
-                                "name": "Station-Bus-NW",
-                                "vlan_id": 200
-                            }
-                        ]
                     }
                 ]
             }
