@@ -46,7 +46,7 @@ spec:
                         "mtu": 1500,
                         "port_groups": [
                             {
-                                "name": "Mgmt-vpac",
+                                "name": "Mgmt-Utilities",
                                 "vlan_id": 200
                             }
                         ]
