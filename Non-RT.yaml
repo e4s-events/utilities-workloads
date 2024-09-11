@@ -1,0 +1,26 @@
+#example deployment for Non-RT VM
+apiVersion: vmoperator.vmware.com/v1alpha1
+kind: VirtualMachine
+metadata:
+  name: Non-RT
+  namespace: default
+  annotations:
+    vmoperator.vmware.com/image-supported-check: disable
+spec:
+  className: my-vm-class-1
+  imageName: https://ent.box.com/shared/static/rz1o1nkit6yyxn2i84mke3h3fx437s6j.ova
+  powerState: poweredOn
+  networkInterfaces:
+  - networkName: "VM Network"
+    ethernetCardType: "vmxnet3"
+
+---
+
+apiVersion: vmoperator.vmware.com/v1alpha1
+kind: VirtualMachineClass
+metadata:
+  name: my-vm-class-1
+spec:
+  hardware:
+    cpus: 4
+    memory: 8Gi
