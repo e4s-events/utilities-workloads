@@ -8,7 +8,7 @@ metadata:
     vmoperator.vmware.com/image-supported-check: disable
 spec:
   className: my-vm-class-1
-  imageName: https://ent.box.com/shared/static/rz1o1nkit6yyxn2i84mke3h3fx437s6j.ova
+  imageName: 10.211.167.166/mnt/nfs_share/Non-RealTime-Workload.ova
   powerState: poweredOn
   networkInterfaces:
   - networkName: "VM Network"
