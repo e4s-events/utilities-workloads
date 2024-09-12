@@ -6,10 +6,10 @@ spec:
   hardware:
     cpus: 4
     memory: 8Gi
-     devices:
-      dynamicDirectPathIODevices:
-       - vendorID: 0x8086
-         deviceID: 0x1533
+    devices:
+     dynamicDirectPathIODevices:
+      - vendorID: 0x8086
+        deviceID: 0x1533
   policies:
     resources:
       requests:
