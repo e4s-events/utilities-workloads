@@ -1,0 +1,60 @@
+apiVersion: vmoperator.vmware.com/v1alpha1
+kind: VirtualMachine
+metadata:
+  name: abbssc600-vm
+  namespace: default
+  annotations:
+    vmoperator.vmware.com/image-supported-check: disable
+spec:
+  className: my-vm-class-4
+  imageName: 10.211.167.166/ssc600_disk.ova
+  powerState: poweredOn
+  networkInterfaces:
+    - networkName: "VM Network"
+      ethernetCardType: "vmxnet3"
+
+---
+apiVersion: vmoperator.vmware.com/v1alpha1
+kind: VirtualMachineClass
+metadata:
+  name: my-vm-class-4
+spec:
+  hardware:
+    cpus: 4
+    memory: 8Gi
+    devices:
+     dynamicDirectPathIODevices:
+      - vendorID: 0x8086
+        deviceID: 0x1533
+  policies:
+    resources:
+      requests:
+        cpu: 4
+        memory: 8Gi
+  configSpec:
+    _typeName: VirtualMachineConfigSpec
+    latencySensitivity:
+      _typeName: LatencySensitivity 
+      level: high
+    flags:
+      _typeName: VirtualMachineFlagInfo
+      enableLogging: false
+    extraConfig:
+      - _typeName: OptionValue
+        key: "sched.mem.lpage.enable1GPage"
+        value: "true"
+      - _typeName: OptionValue
+        key: "sched.cpu.affinity.exclusiveNoStats"
+        value: "true" 
+      - _typeName: OptionValue
+        key: "monitor.forceEnableMPTI"
+        value: "true"
+      - _typeName: OptionValue
+        key: "timeTracker.lowLatency"
+        value: "true"
+      - _typeName: OptionValue
+        key: "sched.qos.l3.monitor"
+        value: "true"
+      - _typeName: OptionValue
+        key: "sched.qos.l3.sizeKB"
+        value: "4096"
