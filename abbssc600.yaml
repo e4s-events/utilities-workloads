@@ -57,4 +57,4 @@ spec:
         value: "true"
       - _typeName: OptionValue
         key: "sched.qos.l3.sizeKB"
-        value: "4096"
+        value: "8192"
