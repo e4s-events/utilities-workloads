@@ -11,7 +11,7 @@ spec:
   powerState: poweredOn
   networkInterfaces:
     - networkName: "VM Network"
-      ethernetCardType: "vmxnet3"
+      ethernetCardType: "e1000"
 
 ---
 apiVersion: vmoperator.vmware.com/v1alpha1
