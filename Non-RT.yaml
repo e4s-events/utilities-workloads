@@ -8,7 +8,7 @@ metadata:
     vmoperator.vmware.com/image-supported-check: disable
 spec:
   className: my-vm-class-1
-  imageName: http://10.211.167.166/Non-RealTime-Workload.ova 
+  imageName: 10.211.167.166/Non-RealTime-Workload.ova 
   powerState: poweredOn
   networkInterfaces:
   - networkName: "VM Network"
