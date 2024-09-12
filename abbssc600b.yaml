@@ -6,10 +6,10 @@ spec:
   hardware:
     cpus: 4
     memory: 8Gi
-    devices:
-     dynamicDirectPathIODevices:
-      - vendorID: 0x8086
-        deviceID: 0x1533
+     devices:
+      dynamicDirectPathIODevices:
+       - vendorID: 0x8086
+         deviceID: 0x1533
   policies:
     resources:
       requests:
@@ -54,7 +54,7 @@ metadata:
 spec:
   className: my-vm-class-4
   imageName: 10.211.167.166/ssc600_disk.ova
-  powerState: poweredOff
+  powerState: poweredOn
   networkInterfaces:
     - networkName: "VM Network"
       ethernetCardType: "vmxnet3"
