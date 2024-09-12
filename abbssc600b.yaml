@@ -6,7 +6,7 @@ metadata:
   annotations:
     vmoperator.vmware.com/image-supported-check: disable
 spec:
-  className: my-vm-class-4
+  className: pci-vmclass
   imageName: 10.211.167.166/ssc600_disk.ova
   powerState: poweredOn
   networkInterfaces:
@@ -17,7 +17,7 @@ spec:
 apiVersion: vmoperator.vmware.com/v1alpha1
 kind: VirtualMachineClass
 metadata:
-  name: my-vm-class-4
+  name: pci-vmclass
 spec:
   hardware:
     cpus: 4
