@@ -60,8 +60,6 @@ spec:
                             "device": "vmk1",
                             "ip": {
                                 "dhcp": false,
-                                "ipv4_address": "192.168.100.194",
-                                "ipv4_subnet_mask": "255.255.255.0",
                                 "dhcp_dns": false,
                                 "ipv6": {
                                     "dhcp": false,
@@ -76,8 +74,8 @@ spec:
                             "mac_mode": "AUTO_GENERATED",
                             "mtu": 1500,
                             "enabled": true,
+                            "ip_route_default_gateway": "192.168.100.1"
                             "enabled_services": {
-                                "management": true,
                                 "precision_time_protocol": true
                             }
                         }
@@ -89,6 +87,23 @@ spec:
                         }
                     ]
                 },
+                "host-specific": {
+                    "66dfd748-cf5c-f819-2029-70f8e7d00dbc": {
+                        "esx": {
+                            "network": {
+                                "vmknics": [
+                                    {
+                                        "ip": {
+                                            "ipv4_address": "192.168.100.194",
+                                            "ipv4_subnet_mask": "255.255.255.0"
+                                        },
+                                        "device": "vmk1"
+                                    }
+                                 ]
+                            }
+                        }
+                    }
+                }    
                 "system": {
                     "system_time": {
                         "protocol": "PTP",
@@ -97,4 +112,4 @@ spec:
                 }
             }
         }
-    }
+    },
