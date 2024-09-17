@@ -2,7 +2,7 @@
 apiVersion: esx.vmware.com/v1alpha1
 kind: HostConfiguration
 metadata:
-  name: ptp-sync
+  name: ptp-test
   namespace: esx-system
 spec:
   layertype: Incremental
@@ -78,13 +78,7 @@ spec:
                                 "precision_time_protocol": true
                             }
                         }
-                    ],
-#                    "net_stacks": [
-#                        {
-#                            "key": "defaultTcpipStack",
-#                            "name": "defaultTcpipStack"
-#                        }
-#                    ]
+                    ]
                 },
                 "system": {
                     "system_time": {
