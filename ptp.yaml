@@ -8,7 +8,6 @@ spec:
   layertype: Incremental
   profile: |
     {
-        "profile": {
             "esx": {
                 "network_vss": {
                     "switches": [
@@ -94,5 +93,4 @@ spec:
                     }
                 }
             }
-        }
     }
