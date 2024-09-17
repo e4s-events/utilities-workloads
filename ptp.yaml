@@ -2,7 +2,7 @@
 apiVersion: esx.vmware.com/v1alpha1
 kind: HostConfiguration
 metadata:
-  name: ntp-sync
+  name: ptp-sync
   namespace: esx-system
 spec:
   layertype: Incremental
@@ -21,7 +21,7 @@ spec:
                                     "rolling_order": false,
                                     "link_criteria_beacon": "IGNORE",
                                     "active_nics": [
-                                        "vmnic1"
+                                        "vmnic3"
                                     ],
                                     "standby_nics": []
                                 },
@@ -40,7 +40,7 @@ spec:
                                     "operation": "LISTEN"
                                 },
                                 "nics": [
-                                    "vmnic1"
+                                    "vmnic3"
                                 ]
                             },
                             "num_ports": 1024,
