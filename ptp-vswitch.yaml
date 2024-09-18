@@ -59,7 +59,7 @@ spec:
                             "device": "vmk1",
                             "ip": {
                                 "ipv4_address": "192.168.100.194",
-                                "ipv4_subnet_mask": "255.255.255.0"
+                                "ipv4_subnet_mask": "255.255.255.0",
                                 "dhcp": false,
                                 "dhcp_dns": false,
                                 "ipv6": {
