@@ -74,6 +74,7 @@ spec:
                             "port_group": "PTP-PG",
                             "mac_mode": "AUTO_GENERATED",
                             "mtu": 1500,
+                            "ip_route_default_gateway": "192.168.100.1",
                             "enabled": true,
                             "enabled_services": {
                                 "management": true,
