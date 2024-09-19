@@ -27,6 +27,10 @@ spec:
      dynamicDirectPathIODevices:
       - vendorID: 0x8086
         deviceID: 0x1572
+  policies:
+    resources:
+      requests:
+        memory: 2Gi
   configSpec:
     extraConfig:
       - _typeName: OptionValue
