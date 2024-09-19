@@ -30,7 +30,7 @@ spec:
   policies:
     resources:
       requests:
-        memory: 2Gi
+        memory: 4Gi
   configSpec:
     extraConfig:
       - _typeName: OptionValue
