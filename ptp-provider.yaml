@@ -10,10 +10,23 @@ spec:
   className: ptp-provider
   imageName: 10.211.167.166/PTP-Provider.ova 
   powerState: poweredOn
-  networkInterfaces:
-  - networkName: "VM Network"
-    ethernetCardType: "vmxnet3"
-
+  vmMetadata:
+    transport: CloudInit
+    configMapName: ptp-eth-config
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ptp-eth-config
+  namespace: ec-system
+data:
+  networkconfig: |
+        version: 2
+        ethernets:
+            eth1:
+                dhcp: "false"
+                addresses:
+                    - 192.168.100.196/24 
 ---
 apiVersion: vmoperator.vmware.com/v1alpha1
 kind: VirtualMachineClass
@@ -45,3 +58,4 @@ spec:
       - _typeName: OptionValue
         key: "precisionclock0.refClockProviderProtocol"
         value: "ptp"
+        
