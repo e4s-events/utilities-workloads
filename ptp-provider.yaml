@@ -53,9 +53,6 @@ spec:
         key: "sched.cpu.affinity.exclusiveNoStats"
         value: "true" 
       - _typeName: OptionValue
-        key: "precisionclock0.refClockProvider"
-        value: "true"
-      - _typeName: OptionValue
         key: "precisionclock0.refClockProviderProtocol"
         value: "ptp"
         
