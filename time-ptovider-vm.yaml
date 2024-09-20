@@ -10,6 +10,9 @@ spec:
   className: ptp-provider
   imageName: 10.211.167.166/PTP-Provider.ova 
   powerState: poweredOn
+  networkInterfaces:
+  - networkName: "VM Network"
+    ethernetCardType: "vmxnet3"
   vmMetadata:
     transport: CloudInit
     configMapName: ptp-eth-config
