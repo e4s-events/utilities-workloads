@@ -15,7 +15,6 @@ spec:
     ethernetCardType: "vmxnet3"
 
 ---
-
 apiVersion: vmoperator.vmware.com/v1alpha1
 kind: VirtualMachineClass
 metadata:
