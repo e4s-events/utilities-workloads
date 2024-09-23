@@ -1,0 +1,57 @@
+#example deployment for ptp-provider VM
+apiVersion: vmoperator.vmware.com/v1alpha1
+kind: VirtualMachine
+metadata:
+  name: time-provider
+  namespace: default
+  annotations:
+    vmoperator.vmware.com/image-supported-check: disable
+spec:
+  className: ptp-provider
+  imageName: 10.211.167.166/PTP-Provider.ova 
+  powerState: poweredOn
+  networkInterfaces:
+  - networkName: "VM Network"
+    ethernetCardType: "vmxnet3"
+  vmMetadata:
+    transport: CloudInit
+    configMapName: ptp-eth-config
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ptp-eth-config
+  namespace: default
+data:
+  networkconfig: |
+        version: 2
+        ethernets:
+            eth1:
+                dhcp: "false"
+                addresses:
+                    - 192.168.100.196/24 
+---
+apiVersion: vmoperator.vmware.com/v1alpha1
+kind: VirtualMachineClass
+metadata:
+  name: ptp-provider
+spec:
+  hardware:
+    cpus: 2
+    memory: 4Gi
+    devices:
+     dynamicDirectPathIODevices:
+      - vendorID: 0x8086
+        deviceID: 0x1572
+  policies:
+    resources:
+      requests:
+        memory: 4Gi
+  configSpec:
+    extraConfig:
+      - _typeName: OptionValue
+        key: "precisionclock.adjust.supported"
+        value: "true"
+      - _typeName: OptionValue
+        key: "precisionclock0.refClockProviderProtocol"
+        value: "ptp"
