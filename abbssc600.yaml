@@ -34,7 +34,7 @@ spec:
   configSpec:
     _typeName: VirtualMachineConfigSpec
     latencySensitivity:
-    _typeName: LatencySensitivity 
+      _typeName: LatencySensitivity 
       level: high
     flags:
       _typeName: VirtualMachineFlagInfo
