@@ -35,10 +35,13 @@ spec:
   ports:
     - port: 8081 
       nodePort: 30035
+      name: http-port
     - port: 1234 
       nodePort: 30036
+      name: custom-port-1
     - port: 8888 
       nodePort: 30055
+      name: custom-port-2
 ---
 
 apiVersion: apps/v1
