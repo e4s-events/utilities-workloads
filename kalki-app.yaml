@@ -1,0 +1,144 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wotapp
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: wotapp
+  replicas: 1 # tells deployment to run 1 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: wotapp
+    spec:
+     containers:
+      - name: wotapp
+        image: docker.io/e4sevents/wot_app
+        ports:
+          - containerPort: 8081
+     imagePullSecrets:
+       - name: regcred   
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: wotapp-svc
+  namespace: default
+spec:
+  type: NodePort
+  selector:
+    app: wotapp
+  ports:
+    - port: 8081 
+      nodePort: 30035
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wotui
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: wotui
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: wotui
+    spec:
+      containers:
+        - name: wotui
+          image: docker.io/e4sevents/wotui
+          env:
+            - name: TZ
+              value: Asia/Kolkata
+          volumeMounts:
+            - mountPath: /home/node/.webthings
+              name: shared-data
+          resources: {}
+          ports:
+            - containerPort: 8080
+      volumes:
+        - name: shared-data
+          hostPath:
+            path: /path/to/shared/data
+      imagePullSecrets:
+        - name: regcred
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: wotui-svc
+  namespace: default
+spec:
+  type: NodePort
+  selector:
+    app: wotui
+  ports:
+    - port: 8080
+      nodePort: 30034
+    - port: 8888
+      nodePort: 30011
+    - port: 1234
+      nodePort: 30012
+      
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mqtt
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: mqtt
+  replicas: 1 # tells deployment to run 1 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: mqtt
+    spec:
+     containers:
+      - name: mqtt
+        image: docker.io/e4sevents/mqtt
+        stdin: true
+        tty: true
+        ports:
+         - containerPort: 1883
+         - containerPort: 9001
+        volumeMounts:
+          - name: mosquitto-config
+            mountPath: /kalkitech
+     volumes:
+       - name: mosquitto-config
+         hostPath:
+           path: /kalkitech/config 
+     imagePullSecrets:
+       - name: regcred   
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mqtt-svc
+  namespace: default
+spec:
+  type: NodePort
+  selector:
+    app: mqtt
+  ports:
+    - port: 1883
+      nodePort: 30045
+      name: listener
+    - port: 9001
+      nodePort: 30046
+      name: mqtt
+
+---
